@@ -84,6 +84,11 @@ def main(args):
             Instance(fields)
         )
 
+    with open(os.path.join(os.path.basename(args.output_pkl), 'input_text_sequence_instances.pkl'), 'wb') as handle:
+        pickle.dump(input_text_sequence_instances, handle)
+
+    print(">> (info): the input_text_sequence_instances file is successfully saved in the storage.\n")
+
     # now it's time to encode the now tokenized instances.
     batch_size = args.batch_size
     #iterator = PassThroughIterator()
@@ -100,7 +105,8 @@ def main(args):
     output_corpora['vector_representation'] = list()
     output_corpora['paper_id'] = list()
     output_corpora['corresponding_section'] = list()
-    for _ in tqdm(range(number_of_instances // batch_size + 1)):
+
+    for batches_processed_sofar in tqdm(range(0, number_of_instances // batch_size + 1)):
         sample = next(data_stream)
 
         vector_representations = sequence_encoder(
@@ -111,8 +117,13 @@ def main(args):
         output_corpora['paper_id'] += sample['paper_id']
         output_corpora['corresponding_section'] += sample['corresponding_section']
         output_corpora['dataset_index'] += sample['dataset_index']
-
         output_corpora['vector_representation'] += [numpy.array(e) for e in vector_representations.tolist()]
+
+        if batches_processed_sofar > 0 and batches_processed_sofar % 10 == 0:
+            if not os.path.isdir(os.path.join(os.path.basename(args.output_pkl), 'batches')):
+                os.makedirs(os.path.join(os.path.basename(args.output_pkl), 'batches'))
+            with open(os.path.join(os.path.basename(args.output_pkl), 'batches/batch_{}.pkl'.format(batches_processed_sofar)), 'wb') as handle:
+                pickle.dump(input_text_sequence_instances, handle)
 
     with open(args.output_pkl, 'wb') as handle:
         pickle.dump(output_corpora, handle)
