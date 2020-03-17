@@ -69,6 +69,7 @@ def main(args):
         row = input_dataframe.iloc[i, :]
         tokens = [Token(x) for x in source_tokenizer(row['text_segment'])]
         sequence_field = TextField(tokens, {'source_tokens': source_token_indexers})
+        fields['dataset_index'] = i
         fields['source_tokens'] = sequence_field
         fields['paper_id'] = MetadataField(row['paper_id'])
         fields['text_segment'] = MetadataField(row['text_segment'])
@@ -88,8 +89,11 @@ def main(args):
     data_stream = iterator(iter(input_text_sequence_instances))
 
     output_corpora = dict()
+    output_corpora['dataset_index'] = list()
     output_corpora['text_segment'] = list()
     output_corpora['vector_representation'] = list()
+    output_corpora['paper_id'] = list()
+    output_corpora['corresponding_section'] = list()
     for _ in tqdm(range(number_of_instances // batch_size + 1)):
         sample = next(data_stream)
 
@@ -100,6 +104,7 @@ def main(args):
         output_corpora['text_segment'] += sample['text_segment']
         output_corpora['paper_id'] += sample['paper_id']
         output_corpora['corresponding_section'] += sample['corresponding_section']
+        output_corpora['dataset_index'] += sample['dataset_index']
 
         output_corpora['vector_representation'] += [numpy.array(e) for e in vector_representations.tolist()]
 

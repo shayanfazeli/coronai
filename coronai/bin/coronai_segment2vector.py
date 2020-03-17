@@ -45,8 +45,7 @@ def main(args):
 
     # todo: the paranthesis of wordpiece_tokenizer covering was an issue found in other places as well,
     # make sure to look for them and resolve the issue.
-    source_token_indexers = get_bert_token_indexers(path_to_bert_weights=args.path_to_bert_weights,
-                                                    maximum_number_of_tokens=512, is_model_lowercase=True)
+    source_token_indexers = get_bert_token_indexers(path_to_bert_weights=args.path_to_bert_weights, maximum_number_of_tokens=512, is_model_lowercase=True)
     source_tokenizer = lambda x: source_token_indexers.wordpiece_tokenizer(
         preprocess_text(x))[:510]
 
@@ -70,6 +69,7 @@ def main(args):
         row = input_dataframe.iloc[i, :]
         tokens = [Token(x) for x in source_tokenizer(row['text_segment'])]
         sequence_field = TextField(tokens, {'source_tokens': source_token_indexers})
+        fields['dataset_index'] = i
         fields['source_tokens'] = sequence_field
         fields['paper_id'] = MetadataField(row['paper_id'])
         fields['text_segment'] = MetadataField(row['text_segment'])
@@ -80,7 +80,7 @@ def main(args):
 
     # now it's time to encode the now tokenized instances.
     batch_size = args.batch_size
-    # iterator = PassThroughIterator()
+    #iterator = PassThroughIterator()
     iterator = BucketIterator(batch_size=batch_size, sorting_keys=[('source_tokens', 'num_tokens')])
     vocabulary = Vocabulary()
     iterator.index_with(vocabulary)
@@ -89,8 +89,11 @@ def main(args):
     data_stream = iterator(iter(input_text_sequence_instances))
 
     output_corpora = dict()
+    output_corpora['dataset_index'] = list()
     output_corpora['text_segment'] = list()
     output_corpora['vector_representation'] = list()
+    output_corpora['paper_id'] = list()
+    output_corpora['corresponding_section'] = list()
     for _ in tqdm(range(number_of_instances // batch_size + 1)):
         sample = next(data_stream)
 
@@ -101,6 +104,7 @@ def main(args):
         output_corpora['text_segment'] += sample['text_segment']
         output_corpora['paper_id'] += sample['paper_id']
         output_corpora['corresponding_section'] += sample['corresponding_section']
+        output_corpora['dataset_index'] += sample['dataset_index']
 
         output_corpora['vector_representation'] += [numpy.array(e) for e in vector_representations.tolist()]
 
@@ -131,8 +135,7 @@ if __name__ == "__main__":
         help="The path to the corresponding bert weights (pytorch weights) to be used."
     )
     parser.add_argument(
-        '-g', '--gpu', type=int, default=-1,
-        help="preferred GPU id. If set as -1, the process automatically chooses the GPU with highest memory availability.")  # -1: selecting best gpu is automatic based on MEMORY availability
+        '-g', '--gpu', type=int, default=-1, help="preferred GPU id. If set as -1, the process automatically chooses the GPU with highest memory availability.") # -1: selecting best gpu is automatic based on MEMORY availability
 
     args = parser.parse_args()
 
