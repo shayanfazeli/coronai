@@ -51,7 +51,8 @@ def main(args):
 
     # todo: the paranthesis of wordpiece_tokenizer covering was an issue found in other places as well,
     # make sure to look for them and resolve the issue.
-    source_token_indexers = get_bert_token_indexers(path_to_bert_weights=args.path_to_bert_weights, maximum_number_of_tokens=512, is_model_lowercase=True)
+    source_token_indexers = get_bert_token_indexers(path_to_bert_weights=args.path_to_bert_weights,
+                                                    maximum_number_of_tokens=512, is_model_lowercase=True)
     source_tokenizer = lambda x: source_token_indexers.wordpiece_tokenizer(
         preprocess_text(x))[:510]
 
@@ -84,14 +85,14 @@ def main(args):
             Instance(fields)
         )
 
-    with open(os.path.join(os.path.basename(args.output_pkl), 'input_text_sequence_instances.pkl'), 'wb') as handle:
+    with open(os.path.join(os.path.dirname(args.output_pkl), 'input_text_sequence_instances.pkl'), 'wb') as handle:
         pickle.dump(input_text_sequence_instances, handle)
 
     print(">> (info): the input_text_sequence_instances file is successfully saved in the storage.\n")
 
     # now it's time to encode the now tokenized instances.
     batch_size = args.batch_size
-    #iterator = PassThroughIterator()
+    # iterator = PassThroughIterator()
     iterator = BucketIterator(batch_size=batch_size, sorting_keys=[('source_tokens', 'num_tokens')])
     vocabulary = Vocabulary()
     iterator.index_with(vocabulary)
@@ -120,9 +121,10 @@ def main(args):
         output_corpora['vector_representation'] += [numpy.array(e) for e in vector_representations.tolist()]
 
         if batches_processed_sofar > 0 and batches_processed_sofar % 10 == 0:
-            if not os.path.isdir(os.path.join(os.path.basename(args.output_pkl), 'batches')):
-                os.makedirs(os.path.join(os.path.basename(args.output_pkl), 'batches'))
-            with open(os.path.join(os.path.basename(args.output_pkl), 'batches/batch_{}.pkl'.format(batches_processed_sofar)), 'wb') as handle:
+            if not os.path.isdir(os.path.join(os.path.dirname(args.output_pkl), 'batches')):
+                os.makedirs(os.path.join(os.path.dirname(args.output_pkl), 'batches'))
+            with open(os.path.join(os.path.dirname(args.output_pkl),
+                                   'batches/batch_{}.pkl'.format(batches_processed_sofar)), 'wb') as handle:
                 pickle.dump(input_text_sequence_instances, handle)
 
     with open(args.output_pkl, 'wb') as handle:
@@ -152,7 +154,8 @@ if __name__ == "__main__":
         help="The path to the corresponding bert weights (pytorch weights) to be used."
     )
     parser.add_argument(
-        '-g', '--gpu', type=int, default=-1, help="preferred GPU id. If set as -1, the process automatically chooses the GPU with highest memory availability.") # -1: selecting best gpu is automatic based on MEMORY availability
+        '-g', '--gpu', type=int, default=-1,
+        help="preferred GPU id. If set as -1, the process automatically chooses the GPU with highest memory availability.")  # -1: selecting best gpu is automatic based on MEMORY availability
 
     args = parser.parse_args()
 
