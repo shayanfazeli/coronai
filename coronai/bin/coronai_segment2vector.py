@@ -45,7 +45,8 @@ def main(args):
 
     # todo: the paranthesis of wordpiece_tokenizer covering was an issue found in other places as well,
     # make sure to look for them and resolve the issue.
-    source_token_indexers = get_bert_token_indexers(path_to_bert_weights=args.path_to_bert_weights, maximum_number_of_tokens=512, is_model_lowercase=True)
+    source_token_indexers = get_bert_token_indexers(path_to_bert_weights=args.path_to_bert_weights,
+                                                    maximum_number_of_tokens=512, is_model_lowercase=True)
     source_tokenizer = lambda x: source_token_indexers.wordpiece_tokenizer(
         preprocess_text(x))[:510]
 
@@ -62,7 +63,9 @@ def main(args):
     sequence_encoder = BertSequencePooler()
 
     input_text_sequence_instances = []
-    for i in range(input_dataframe.shape[0]):
+
+    print(">> (status): preparing data...\n\n")
+    for i in tqdm(range(input_dataframe.shape[0])):
         fields = dict()
         row = input_dataframe.iloc[i, :]
         tokens = [Token(x) for x in source_tokenizer(row['text_segment'])]
@@ -77,7 +80,7 @@ def main(args):
 
     # now it's time to encode the now tokenized instances.
     batch_size = args.batch_size
-    #iterator = PassThroughIterator()
+    # iterator = PassThroughIterator()
     iterator = BucketIterator(batch_size=batch_size, sorting_keys=[('source_tokens', 'num_tokens')])
     vocabulary = Vocabulary()
     iterator.index_with(vocabulary)
@@ -104,7 +107,7 @@ def main(args):
     with open(args.output_pkl, 'wb') as handle:
         pickle.dump(output_corpora, handle)
 
-    print('all done.\n')
+    print('>> (info): all done.\n')
 
 
 if __name__ == "__main__":
@@ -128,7 +131,8 @@ if __name__ == "__main__":
         help="The path to the corresponding bert weights (pytorch weights) to be used."
     )
     parser.add_argument(
-        '-g', '--gpu', type=int, default=-1, help="preferred GPU id. If set as -1, the process automatically chooses the GPU with highest memory availability.") # -1: selecting best gpu is automatic based on MEMORY availability
+        '-g', '--gpu', type=int, default=-1,
+        help="preferred GPU id. If set as -1, the process automatically chooses the GPU with highest memory availability.")  # -1: selecting best gpu is automatic based on MEMORY availability
 
     args = parser.parse_args()
 
