@@ -30,6 +30,12 @@ def main(args):
     one can read the clean CSV file that includes the text segments, and represent each and every one of them
     using a variant of BERT.
 
+    Sample command to run:
+
+    ```
+    coronai_segment2vector --gpu=2 --input_csv=.../text_segment_dataset.csv --output_pkl=.../output.pkl --path_to_bert_weights=.../NCBI_BERT_pubmed_mimic_uncased_L-24_H-1024_A-16 --batch_size=400
+    ```
+
     Parameters
     ----------
     args: `args.Namespace`, required
@@ -65,8 +71,6 @@ def main(args):
 
     print(">> (status): preparing data...\n\n")
     for i in tqdm(range(input_dataframe.shape[0])):
-        if i > 10000:
-            break
         fields = dict()
         row = input_dataframe.iloc[i, :]
         tokens = [Token(x) for x in source_tokenizer(row['text_segment'])]
