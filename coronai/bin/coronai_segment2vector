@@ -65,6 +65,8 @@ def main(args):
 
     print(">> (status): preparing data...\n\n")
     for i in tqdm(range(input_dataframe.shape[0])):
+        if i > 10000:
+            break
         fields = dict()
         row = input_dataframe.iloc[i, :]
         tokens = [Token(x) for x in source_tokenizer(row['text_segment'])]
