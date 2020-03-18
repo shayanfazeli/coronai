@@ -71,22 +71,27 @@ def main(args):
     input_text_sequence_instances = []
 
     print(">> (status): preparing data...\n\n")
-    for i in tqdm(range(input_dataframe.shape[0])):
-        fields = dict()
-        row = input_dataframe.iloc[i, :]
-        tokens = [Token(x) for x in source_tokenizer(row['text_segment'])]
-        sequence_field = TextField(tokens, {'source_tokens': source_token_indexers})
-        fields['dataset_index'] = MetadataField(i)
-        fields['source_tokens'] = sequence_field
-        fields['paper_id'] = MetadataField(row['paper_id'])
-        fields['text_segment'] = MetadataField(row['text_segment'])
-        fields['corresponding_section'] = MetadataField(row['corresponding_section'])
-        input_text_sequence_instances.append(
-            Instance(fields)
-        )
 
-    with open(os.path.join(os.path.dirname(args.output_pkl), 'input_text_sequence_instances.pkl'), 'wb') as handle:
-        pickle.dump(input_text_sequence_instances, handle)
+    if os.path.isfile(os.path.join(os.path.dirname(args.output_pkl))):
+        with open(os.path.join(os.path.dirname(args.output_pkl), 'input_text_sequence_instances.pkl'), 'rb') as handle:
+            input_text_sequence_instances = pickle.load(handle)
+    else:
+        for i in tqdm(range(input_dataframe.shape[0])):
+            fields = dict()
+            row = input_dataframe.iloc[i, :]
+            tokens = [Token(x) for x in source_tokenizer(row['text_segment'])]
+            sequence_field = TextField(tokens, {'source_tokens': source_token_indexers})
+            fields['dataset_index'] = MetadataField(i)
+            fields['source_tokens'] = sequence_field
+            fields['paper_id'] = MetadataField(row['paper_id'])
+            fields['text_segment'] = MetadataField(row['text_segment'])
+            fields['corresponding_section'] = MetadataField(row['corresponding_section'])
+            input_text_sequence_instances.append(
+                Instance(fields)
+            )
+
+        with open(os.path.join(os.path.dirname(args.output_pkl), 'input_text_sequence_instances.pkl'), 'wb') as handle:
+            pickle.dump(input_text_sequence_instances, handle)
 
     print(">> (info): the input_text_sequence_instances file is successfully saved in the storage.\n")
 
@@ -120,7 +125,7 @@ def main(args):
         output_corpora['dataset_index'] += sample['dataset_index']
         output_corpora['vector_representation'] += [numpy.array(e) for e in vector_representations.tolist()]
 
-        if batches_processed_sofar > 0 and batches_processed_sofar % 10 == 0:
+        if batches_processed_sofar > 0 and batches_processed_sofar % 1 == 0:
             if not os.path.isdir(os.path.join(os.path.dirname(args.output_pkl), 'batches')):
                 os.makedirs(os.path.join(os.path.dirname(args.output_pkl), 'batches'))
             with open(os.path.join(os.path.dirname(args.output_pkl),
