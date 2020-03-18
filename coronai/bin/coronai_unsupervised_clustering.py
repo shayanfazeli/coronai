@@ -165,7 +165,7 @@ def kmeans_pipeline(args: argparse.Namespace) -> None:
     """
     method_parameters = parse_parameters_from_special_string(args.method_params)
     input_dict = fetch_input_dict(input_files=args.input_files)
-    X = numpy.array(input_dict['vector_representations'])
+    X = numpy.array(input_dict['vector_representation'])
     method_searchspace = args.method_searchspace
     variable_name, variable_low, variable_high = method_searchspace.split(':')
     variable_low = int(variable_low)
@@ -208,7 +208,7 @@ def birch_pipeline(args: argparse.Namespace) -> None:
     """
     method_parameters = parse_parameters_from_special_string(args.method_params)
     input_dict = fetch_input_dict(input_files=args.input_files)
-    X = numpy.array(input_dict['vector_representations'])
+    X = numpy.array(input_dict['vector_representation'])
     method_searchspace = args.method_searchspace
     variable_name, variable_low, variable_high = method_searchspace.split(':')
     variable_low = int(variable_low)
