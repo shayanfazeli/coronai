@@ -132,11 +132,8 @@ def main(args):
                                    'batches/batch_{}.pkl'.format(batches_processed_sofar)), 'wb') as handle:
                 pickle.dump(input_text_sequence_instances, handle)
 
-            for key in output_corpora.keys():
-                output_corpora[key] = list()
-
-    with open(args.output_pkl, 'wb') as handle:
-        pickle.dump(output_corpora, handle)
+            for key in input_text_sequence_instances.keys():
+                input_text_sequence_instances[key] = list()
 
     print('>> (info): all done.\n')
 
