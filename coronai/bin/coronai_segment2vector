@@ -130,10 +130,10 @@ def main(args):
                 os.makedirs(os.path.join(os.path.dirname(args.output_pkl), 'batches'))
             with open(os.path.join(os.path.dirname(args.output_pkl),
                                    'batches/batch_{}.pkl'.format(batches_processed_sofar)), 'wb') as handle:
-                pickle.dump(input_text_sequence_instances, handle)
+                pickle.dump(output_corpora, handle)
 
-            for key in input_text_sequence_instances.keys():
-                input_text_sequence_instances[key] = list()
+            for key in output_corpora.keys():
+                output_corpora[key] = list()
 
     print('>> (info): all done.\n')
 
