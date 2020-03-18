@@ -129,9 +129,6 @@ def main(args):
         if args.gpu > -1:
             sample = nn_util.move_to_device(sample, torch.device('cuda:{}'.format(args.gpu)))
 
-        if args.gpu > -1:
-            sample['source_tokens'] = sample['source_tokens'].to(torch.device('cuda:{}'.format(args.gpu)))
-
         vector_representations = sequence_encoder(
             source_token_embeddings(sample['source_tokens'])
         ).data.cpu().numpy()
