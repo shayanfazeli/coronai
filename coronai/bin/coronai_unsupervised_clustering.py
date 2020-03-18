@@ -203,6 +203,7 @@ def kmeans_pipeline(args: argparse.Namespace) -> None:
             method_model = MiniBatchKMeans(**method_parameters)
 
             random_index_permutation = numpy.random.permutation(X.shape[0])
+            labels = numpy.zeros(X.shape[0])
 
             for epoch in range(args.num_epochs):
                 print('>> (status): epoch {}/{}\n'.format(epoch, args.num_epochs))
@@ -210,6 +211,7 @@ def kmeans_pipeline(args: argparse.Namespace) -> None:
                 while (cursor + args.batch_size) <= X.shape[0]:
                     method_model.partial_fit(
                         X[random_index_permutation[cursor:(cursor+args.batch_size)], :])
+                    labels[random_index_permutation[cursor:(cursor+args.batch_size)]] = method_model.labels_
                     cursor += args.batch_size
 
             history.append(
@@ -217,7 +219,7 @@ def kmeans_pipeline(args: argparse.Namespace) -> None:
                  'method_name': 'kmeans',
                  'parameters': method_parameters,
                  'input_files': args.input_files,
-                 'labels': method_model.labels_,
+                 'labels': labels,
                  'loss': compute_point_loss(X=X, labels=method_model.labels_)
                  }
             )
@@ -280,6 +282,7 @@ def birch_pipeline(args: argparse.Namespace) -> None:
             method_model = Birch(**method_parameters)
 
             random_index_permutation = numpy.random.permutation(X.shape[0])
+            labels = numpy.zeros(X.shape[0])
 
             for epoch in range(args.num_epochs):
                 print('>> (status): epoch {}/{}\n'.format(epoch, args.num_epochs))
@@ -287,6 +290,7 @@ def birch_pipeline(args: argparse.Namespace) -> None:
                 while (cursor + args.batch_size) <= X.shape[0]:
                     method_model.partial_fit(
                         X[random_index_permutation[cursor:(cursor + args.batch_size)], :])
+                    labels[random_index_permutation[cursor:(cursor + args.batch_size)]] = method_model.labels_
                     cursor += args.batch_size
 
             history.append(
@@ -294,7 +298,7 @@ def birch_pipeline(args: argparse.Namespace) -> None:
                  'method_name': 'kmeans',
                  'parameters': method_parameters,
                  'input_files': args.input_files,
-                 'labels': method_model.labels_,
+                 'labels': labels,
                  'loss': compute_point_loss(X=X, labels=method_model.labels_)
                  }
             )
