@@ -20,6 +20,7 @@ setup(
     python_requires='>3.6.0',
     scripts=[
         'coronai/bin/coronai_segment2vector',
+        'coronai/bin/coronai_unsupervised_clustering',
     ],
     install_requires=[
         'numpy>=1.16.4',
