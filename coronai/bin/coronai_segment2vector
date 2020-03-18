@@ -9,6 +9,8 @@ import argparse
 import pickle
 import numpy
 from tqdm import tqdm
+import torch
+import torch.nn
 from allennlp.data.vocabulary import Vocabulary
 from allennlp.data.iterators import PassThroughIterator, BucketIterator
 from allennlp.data.tokenizers import Token
@@ -68,6 +70,15 @@ def main(args):
 
     sequence_encoder = BertSequencePooler()
 
+    if args.gpu > -1:
+        sequence_encoder = sequence_encoder.to(torch.device('cuda:{}'.format(args.gpu)))
+        try:
+            source_token_embeddings = source_token_embeddings.cuda(torch.device('cuda:{}'.format(args.gpu)))
+        except Exception as e:
+            print(e)
+            import pdb
+            pdb.set_trace()
+
     input_text_sequence_instances = []
 
     print(">> (status): preparing data...\n\n")
@@ -93,7 +104,7 @@ def main(args):
         with open(os.path.join(os.path.dirname(args.output_pkl), 'input_text_sequence_instances.pkl'), 'wb') as handle:
             pickle.dump(input_text_sequence_instances, handle)
 
-    print(">> (info): the input_text_sequence_instances file is successfully saved in the storage.\n")
+        print(">> (info): the input_text_sequence_instances file is successfully saved in the storage.\n")
 
     # now it's time to encode the now tokenized instances.
     batch_size = args.batch_size
@@ -114,6 +125,9 @@ def main(args):
 
     for batches_processed_sofar in tqdm(range(0, number_of_instances // batch_size + 1)):
         sample = next(data_stream)
+
+        if args.gpu > -1:
+            sample['source_tokens'] = sample['source_tokens'].to(torch.device('cuda:{}'.format(args.gpu)))
 
         vector_representations = sequence_encoder(
             source_token_embeddings(sample['source_tokens'])
