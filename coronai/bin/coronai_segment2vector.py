@@ -72,7 +72,7 @@ def main(args):
 
     print(">> (status): preparing data...\n\n")
 
-    if os.path.isfile(os.path.join(os.path.dirname(args.output_pkl))):
+    if os.path.isfile(os.path.join(os.path.dirname(args.output_pkl), 'input_text_sequence_instances.pkl')):
         with open(os.path.join(os.path.dirname(args.output_pkl), 'input_text_sequence_instances.pkl'), 'rb') as handle:
             input_text_sequence_instances = pickle.load(handle)
     else:
