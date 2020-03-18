@@ -20,7 +20,7 @@ import matplotlib.pyplot as plt
 import plotnine as p9
 from tqdm import tqdm
 import sklearn
-from sklearn.cluster import KMeans, Birch
+from sklearn.cluster import KMeans, Birch, MiniBatchKMeans
 import numpy.linalg as linear_algebra
 
 
@@ -177,25 +177,55 @@ def kmeans_pipeline(args: argparse.Namespace) -> None:
 
     output_filepath = os.path.abspath(args.output_bundle)
 
-    for i in tqdm(range(variable_low, variable_high + 1)):
-        method_parameters[variable_name] = i
-        method_model = KMeans(**method_parameters).fit(X)
-        method_model.fit(X)
+    if args.batch_size == 0:
+        for i in tqdm(range(variable_low, variable_high + 1)):
+            method_parameters[variable_name] = i
+            method_model = KMeans(**method_parameters).fit(X)
+            method_model.fit(X)
 
-        history.append(
-            {'search_on': variable_name,
-             'method_name': 'kmeans',
-             'parameters': method_parameters,
-             'input_files': args.input_files,
-             'labels': method_model.labels_,
-             'loss': compute_point_loss(X=X, labels=method_model.labels_)
-             }
-        )
+            history.append(
+                {'search_on': variable_name,
+                 'method_name': 'kmeans',
+                 'parameters': method_parameters,
+                 'input_files': args.input_files,
+                 'labels': method_model.labels_,
+                 'loss': compute_point_loss(X=X, labels=method_model.labels_)
+                 }
+            )
 
-        with open(output_filepath, 'wb') as handle:
-            pickle.dump({'history': history}, handle)
+            with open(output_filepath, 'wb') as handle:
+                pickle.dump({'history': history}, handle)
 
-        del method_model
+            del method_model
+    else:
+        for i in tqdm(range(variable_low, variable_high + 1)):
+            method_parameters[variable_name] = i
+            method_model = MiniBatchKMeans(**method_parameters)
+
+            random_index_permutation = numpy.random.permutation(X.shape[0])
+
+            for epoch in range(args.num_epochs):
+                print('>> (status): epoch {}/{}\n'.format(epoch, args.num_epochs))
+                cursor = 0
+                while (cursor + args.batch_size) <= X.shape[0]:
+                    method_model.partial_fit(
+                        X[random_index_permutation[cursor:(cursor+args.batch_size)], :])
+                    cursor += args.batch_size
+
+            history.append(
+                {'search_on': variable_name,
+                 'method_name': 'kmeans',
+                 'parameters': method_parameters,
+                 'input_files': args.input_files,
+                 'labels': method_model.labels_,
+                 'loss': compute_point_loss(X=X, labels=method_model.labels_)
+                 }
+            )
+
+            with open(output_filepath, 'wb') as handle:
+                pickle.dump({'history': history}, handle)
+
+            del method_model
 
     print('\n>> status: all finished.\n')
 
@@ -220,29 +250,59 @@ def birch_pipeline(args: argparse.Namespace) -> None:
 
     output_filepath = os.path.abspath(args.output_bundle)
 
-    for i in tqdm(range(variable_low, variable_high + 1)):
-        method_parameters[variable_name] = i
+    if args.batch_size == 0:
+        for i in tqdm(range(variable_low, variable_high + 1)):
+            method_parameters[variable_name] = i
 
-        if method_parameters['n_clusters'] == 0:
-            method_parameters['n_clusters'] = None
+            if method_parameters['n_clusters'] == 0:
+                method_parameters['n_clusters'] = None
 
-        method_model = Birch(**method_parameters).fit(X)
-        method_model.fit(X)
+            method_model = Birch(**method_parameters).fit(X)
+            method_model.fit(X)
 
-        history.append(
-            {'search_on': variable_name,
-             'method_name': 'birch',
-             'parameters': method_parameters,
-             'input_files': args.input_files,
-             'labels': method_model.labels_,
-             'loss': compute_point_loss(X=X, labels=method_model.labels_)
-             }
-        )
+            history.append(
+                {'search_on': variable_name,
+                 'method_name': 'birch',
+                 'parameters': method_parameters,
+                 'input_files': args.input_files,
+                 'labels': method_model.labels_,
+                 'loss': compute_point_loss(X=X, labels=method_model.labels_)
+                 }
+            )
 
-        with open(output_filepath, 'wb') as handle:
-            pickle.dump({'history': history}, handle)
+            with open(output_filepath, 'wb') as handle:
+                pickle.dump({'history': history}, handle)
 
-        del method_model
+            del method_model
+    else:
+        for i in tqdm(range(variable_low, variable_high + 1)):
+            method_parameters[variable_name] = i
+            method_model = Birch(**method_parameters)
+
+            random_index_permutation = numpy.random.permutation(X.shape[0])
+
+            for epoch in range(args.num_epochs):
+                print('>> (status): epoch {}/{}\n'.format(epoch, args.num_epochs))
+                cursor = 0
+                while (cursor + args.batch_size) <= X.shape[0]:
+                    method_model.partial_fit(
+                        X[random_index_permutation[cursor:(cursor + args.batch_size)], :])
+                    cursor += args.batch_size
+
+            history.append(
+                {'search_on': variable_name,
+                 'method_name': 'kmeans',
+                 'parameters': method_parameters,
+                 'input_files': args.input_files,
+                 'labels': method_model.labels_,
+                 'loss': compute_point_loss(X=X, labels=method_model.labels_)
+                 }
+            )
+
+            with open(output_filepath, 'wb') as handle:
+                pickle.dump({'history': history}, handle)
+
+            del method_model
 
     print('\n>> status: all finished.\n')
 
@@ -274,6 +334,16 @@ if __name__ == "__main__":
     parser.add_argument(
         '--max_memory', type=int, default=30000,
         help='The maximum amount of memory that the application is allowed to use, in MB'
+    )
+
+    parser.add_argument(
+        '--num_epochs', type=int, default=100,
+        help='The maximum amount of memory that the application is allowed to use, in MB'
+    )
+
+    parser.add_argument(
+        '--batch_size', type=int, default=0,
+        help='If a positive int is provided, will be used to do the unsupervised clustering with mini-batches'
     )
 
     args = parser.parse_args()
