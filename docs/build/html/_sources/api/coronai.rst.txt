@@ -1,0 +1,18 @@
+coronai package
+===============
+
+Subpackages
+-----------
+
+.. toctree::
+
+   coronai.bin
+   coronai.library
+
+Module contents
+---------------
+
+.. automodule:: coronai
+   :members:
+   :undoc-members:
+   :show-inheritance:

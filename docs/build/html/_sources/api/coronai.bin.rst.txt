@@ -1,0 +1,30 @@
+coronai.bin package
+===================
+
+Submodules
+----------
+
+coronai.bin.coronai\_segment2vector module
+------------------------------------------
+
+.. automodule:: coronai.bin.coronai_segment2vector
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+coronai.bin.coronai\_unsupervised\_clustering module
+----------------------------------------------------
+
+.. automodule:: coronai.bin.coronai_unsupervised_clustering
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: coronai.bin
+   :members:
+   :undoc-members:
+   :show-inheritance:

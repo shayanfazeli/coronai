@@ -1,0 +1,366 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <title>coronai.library package &#8212; CoronAI v0.1.0 documentation</title>
+
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-4.3.1-dist/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinxbootstrap4.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/sphinxbootstrap4.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="coronai package" href="coronai.html" />
+    <link rel="prev" title="coronai.bin package" href="coronai.bin.html" /> 
+  </head><body>
+  <nav class="navbar navbar-expand-md  fixed-top navbar-dark bg-inverse flex-wrap">
+    <button class="navbar-toggler ml-auto py-2" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">
+      &#9776;
+    </button>
+      <div class="navbar-collapse collapse" id="exCollapsingNavbar2">
+           <a class="navbar-brand py-1" href="../index.html">
+              <img class="logo" src="../_static/logo.png" alt="CoronAI"/>
+          </a>
+          <ul class="navbar-nav mr-auto">
+          
+              <li class="nav-item dropdown d-none d-sm-block" id="navbar-pages">
+                  <a class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
+                  <ul class="dropdown-menu">
+                  <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="coronai.bin.html">coronai.bin package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="coronai.bin.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coronai.bin.html#module-coronai.bin.coronai_segment2vector">coronai.bin.coronai_segment2vector module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coronai.bin.html#module-coronai.bin.coronai_unsupervised_clustering">coronai.bin.coronai_unsupervised_clustering module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coronai.bin.html#module-coronai.bin">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">coronai.library package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-coronai.library.anlp">coronai.library.anlp module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-coronai.library.preprocessing">coronai.library.preprocessing module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-coronai.library">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="coronai.html">coronai package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="coronai.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="coronai.bin.html">coronai.bin package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="coronai.bin.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="coronai.bin.html#module-coronai.bin.coronai_segment2vector">coronai.bin.coronai_segment2vector module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="coronai.bin.html#module-coronai.bin.coronai_unsupervised_clustering">coronai.bin.coronai_unsupervised_clustering module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="coronai.bin.html#module-coronai.bin">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">coronai.library package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-coronai.library.anlp">coronai.library.anlp module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-coronai.library.preprocessing">coronai.library.preprocessing module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-coronai.library">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="coronai.html#module-coronai">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">coronai</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="coronai.html">coronai package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="coronai.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="coronai.bin.html">coronai.bin package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">coronai.library package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="coronai.html#module-coronai">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                  </ul>
+              </li>
+              <li class="nav-item">
+              <a  class="nav-link" href="../index.html">Home</a></li>
+              <li class="nav-item">
+              
+                  <a  class="nav-link" href="http://example.com">Link</a></li>
+          </ul>
+          <div class="dropdown-divider d-block d-sm-none mb-4"></div>
+             
+<form class="form-inline" action="../search.html" method="get">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+      </div>
+
+      <!--<div class="row hidden-sm-up">
+          <div class="collapse navbar-toggleable-xs container" id="exCollapsingNavbar2">
+              <div class="container">
+             　　 <a class="navbar-brand" href="../index.html">
+                      <img class="logo" src="../_static/logo.png" alt="CoronAI"/>
+                  </a>
+              </div>
+              <ul class="nav navbar-nav">
+                  <li>
+                  <a  class="nav-link" href="../index.html">Home</a></li>
+                  <li>
+                  
+                      <a  class="nav-link" href="http://example.com">Link</a></li>
+              </ul>
+              <div class="dropdown-divider"></div>
+              <div class="navbar-text">search<div>
+              
+<form class="form-inline" action="../search.html" method="get">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          </div>
+      </div>-->
+    </nav>
+  </div>
+
+    <div class="related d-flex justify-content-between bg-light flex-wrap" role="navigation" aria-label="related navigation">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="../index.html">CoronAI v0.1.0 documentation</a></li>
+            <li class="breadcrumb-item active">coronai.library package</li>
+        </ol>
+       <div>
+          <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+               <a href="coronai.bin.html" title="Previous Chapter: coronai.bin package" class="btn btn-primary" role="botton" accesskey="P">
+                   &laquo; coronai.bin package
+               </a>
+               <a href="coronai.html" title="Next Chapter: coronai package" class="btn btn-primary" role="botton" accesskey="N">
+                   coronai package &raquo;
+               </a>
+           </div>
+       </div>
+    </div>
+
+  <div class="main container-fluid">
+    <div class="row"> 
+      <div class="sphinxsidebar d-none d-md-block">
+        <div class="sphinxsidebarwrapper">          
+            <h4>Table Of Contents</h4>
+            
+            
+              <div class="sidebartoctree">
+                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="coronai.bin.html">coronai.bin package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="coronai.bin.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coronai.bin.html#module-coronai.bin.coronai_segment2vector">coronai.bin.coronai_segment2vector module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coronai.bin.html#module-coronai.bin.coronai_unsupervised_clustering">coronai.bin.coronai_unsupervised_clustering module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coronai.bin.html#module-coronai.bin">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">coronai.library package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-coronai.library.anlp">coronai.library.anlp module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-coronai.library.preprocessing">coronai.library.preprocessing module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-coronai.library">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="coronai.html">coronai package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="coronai.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="coronai.bin.html">coronai.bin package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="coronai.bin.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="coronai.bin.html#module-coronai.bin.coronai_segment2vector">coronai.bin.coronai_segment2vector module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="coronai.bin.html#module-coronai.bin.coronai_unsupervised_clustering">coronai.bin.coronai_unsupervised_clustering module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="coronai.bin.html#module-coronai.bin">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">coronai.library package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-coronai.library.anlp">coronai.library.anlp module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-coronai.library.preprocessing">coronai.library.preprocessing module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-coronai.library">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="coronai.html#module-coronai">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">coronai</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="coronai.html">coronai package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="coronai.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="coronai.bin.html">coronai.bin package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">coronai.library package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="coronai.html#module-coronai">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            
+          
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="coronai.bin.html"
+                        title="previous chapter">coronai.bin package</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="coronai.html"
+                        title="next chapter">coronai package</a></p>
+<div id="searchbox" style="display: none">
+    <form class="form search" action="../search.html" method="get">
+      <input type="text" name="q" class="form-control" placeholder="Search..." />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <ul class="this-page-menu list-unstyled text-right">
+    <li><a href="../_sources/api/coronai.library.rst.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+        </div>
+      </div> 
+
+      <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="coronai-library-package">
+<h1>coronai.library package<a class="headerlink" href="#coronai-library-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-coronai.library.anlp">
+<span id="coronai-library-anlp-module"></span><h2>coronai.library.anlp module<a class="headerlink" href="#module-coronai.library.anlp" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="coronai.library.anlp.BertSequencePooler">
+<em class="property">class </em><code class="sig-prename descclassname">coronai.library.anlp.</code><code class="sig-name descname">BertSequencePooler</code><span class="sig-paren">(</span><em class="sig-param">stateful: bool = False</em><span class="sig-paren">)</span><a class="headerlink" href="#coronai.library.anlp.BertSequencePooler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder</span></code></p>
+<dl class="method">
+<dt id="coronai.library.anlp.BertSequencePooler.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">embeddings: torch.Tensor</em>, <em class="sig-param">mask: torch.Tensor = None</em><span class="sig-paren">)</span><a class="headerlink" href="#coronai.library.anlp.BertSequencePooler.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>The module <cite>BertSequencePooler</cite> will allow the aggregation of sequence representations.</p>
+<dl class="simple">
+<dt>embeddings: <cite>torch.Tensor</cite>, required</dt><dd><p>The embeddings will be a tensor from which the first sequence element will be extracted.</p>
+</dd>
+<dt>mask: <cite>torch.Tensor</cite>, optional (default=None)</dt><dd><p>The mask that will be inputted according to the Seq2Vec base class, but wont be used in this instance.</p>
+</dd>
+</dl>
+<p>The sequence representation tensor will be returned which contains the first element only. Later on, it is
+possible to utilize the masks in a more efficient way.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="coronai.library.anlp.BertSequencePooler.get_output_dim">
+<code class="sig-name descname">get_output_dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#coronai.library.anlp.BertSequencePooler.get_output_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method will not be used in this case, merely overriding it to comply with the criteria.
+If the output dimension is needed, the main embedding module can be used to output that. There is no need
+to use this.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="coronai.library.anlp.get_bert_token_embeddings">
+<code class="sig-prename descclassname">coronai.library.anlp.</code><code class="sig-name descname">get_bert_token_embeddings</code><span class="sig-paren">(</span><em class="sig-param">path_to_bert_weights: str</em>, <em class="sig-param">top_layer_only: bool</em>, <em class="sig-param">indexer_id: str</em>, <em class="sig-param">token_to_embed: str = 'word'</em>, <em class="sig-param">fine_tune_embeddings: bool = False</em><span class="sig-paren">)</span> &#x2192; allennlp.modules.text_field_embedders.text_field_embedder.TextFieldEmbedder<a class="headerlink" href="#coronai.library.anlp.get_bert_token_embeddings" title="Permalink to this definition">¶</a></dt>
+<dd><p>To get the BERT-based token embeddings (including NCBI-BERT, BioBERT, Standard BERT, etc. the
+<a class="reference internal" href="#coronai.library.anlp.get_bert_token_embeddings" title="coronai.library.anlp.get_bert_token_embeddings"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_bert_token_embeddings()</span></code></a> can be used.</p>
+<dl class="simple">
+<dt>path_to_bert_weights: <cite>str</cite>, required</dt><dd><p>The path to the pytorch bert weights</p>
+</dd>
+<dt>top_layer_only: <cite>bool</cite>, required</dt><dd><p>This boolean value will indicate whether only the top layer outputs should be used</p>
+</dd>
+<dt>fine_tune_embeddings: <cite>bool</cite>, optional (default=False)</dt><dd><p>Not useful in this project, remains here because of consistency with diagnote. Mainly
+for setting the gradients and fine-tune capability.</p>
+</dd>
+<dt>token_to_embed: <cite>str</cite>, optional (default=word)</dt><dd><p>Focus on embedding words or subwords</p>
+</dd>
+<dt>indexer_id: <cite>str</cite>, required</dt><dd><p>The indexer id for allennlp</p>
+</dd>
+</dl>
+<p>It returns the <cite>TextFieldEmbedder</cite> object for embedding.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="coronai.library.anlp.get_bert_token_indexers">
+<code class="sig-prename descclassname">coronai.library.anlp.</code><code class="sig-name descname">get_bert_token_indexers</code><span class="sig-paren">(</span><em class="sig-param">path_to_bert_weights: str</em>, <em class="sig-param">maximum_number_of_tokens: int</em>, <em class="sig-param">is_model_lowercase: bool = True</em><span class="sig-paren">)</span> &#x2192; allennlp.data.token_indexers.wordpiece_indexer.PretrainedBertIndexer<a class="headerlink" href="#coronai.library.anlp.get_bert_token_indexers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieving bert based token indexers (which will do sub-word tokenizing)</p>
+<dl class="simple">
+<dt>path_to_bert_weights: <cite>str</cite>, required</dt><dd><p>The path to the pytorch bert weights</p>
+</dd>
+<dt>maximum_number_of_tokens: <cite>int</cite>, required</dt><dd><p>The maximum number of tokens (truncation or sliding window based on allennlp design)</p>
+</dd>
+<dt>is_model_lowercase: <cite>bool</cite> optional (default=True)</dt><dd><p>Force lower casing the input to the model</p>
+</dd>
+</dl>
+<p>Returns the required instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">PretrainedBertIndexer</span></code>.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-coronai.library.preprocessing">
+<span id="coronai-library-preprocessing-module"></span><h2>coronai.library.preprocessing module<a class="headerlink" href="#module-coronai.library.preprocessing" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="coronai.library.preprocessing.preprocess_text">
+<code class="sig-prename descclassname">coronai.library.preprocessing.</code><code class="sig-name descname">preprocess_text</code><span class="sig-paren">(</span><em class="sig-param">text: str</em>, <em class="sig-param">mode: int = 1</em>, <em class="sig-param">verbose: bool = False</em>, <em class="sig-param">return_sentences: bool = False</em>, <em class="sig-param">split_words_in_sentences: bool = False</em>, <em class="sig-param">force_lower_case: bool = True</em><span class="sig-paren">)</span> &#x2192; Union[str, List[str], List[List[str]]]<a class="headerlink" href="#coronai.library.preprocessing.preprocess_text" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="#coronai.library.preprocessing.preprocess_text" title="coronai.library.preprocessing.preprocess_text"><code class="xref py py-func docutils literal notranslate"><span class="pre">preprocess_text()</span></code></a> helps with providing an easy-to-use interface for the basic pre-processing
+routines for NLP applications. Since most of the times our input is in text format, however unclean, using
+this method we can manage to prepare a better input for the tokenizer to peruse.</p>
+<dl class="simple">
+<dt>text: <cite>str</cite>, required</dt><dd><p>The input which is in a string format and will be preprocessed using this method.</p>
+</dd>
+<dt>mode: <cite>int</cite>, optional (default=2)</dt><dd><p>This is the mode of pre-processing. When it is <cite>0</cite> the same text is going to be the output, which
+is designed for specific cases for modular design, when whether or not the system is going to be
+used with applying pre-processing.
+Currently, we have a universal way of preprocessing which is mode <cite>1</cite>.</p>
+</dd>
+<dt>verbose: <cite>bool</cite>, optional (default=False)</dt><dd><p>This parameter decides whether or not to print the outputs indicating the progress and status
+of pre-processing to the standard output.</p>
+</dd>
+<dt>return_sentences: <cite>bool</cite>, optional (default=False)</dt><dd><p>If this parameter is set to true, the output will be the pre-processed sentences. The sentence
+tokenization is performed using <cite>nltk.tokenize.sent_tokenize</cite> and it happens after pre-processing
+the whole text.</p>
+</dd>
+<dt>split_words_in_sentences: <cite>bool</cite>, optional (default=False)</dt><dd><p>If we have <cite>return_sentences=True</cite>, having this parameter set as <cite>True</cite> will command the pre-processor
+to return a <cite>List[List]</cite> in which each <cite>List</cite> represents the words of a sentence.</p>
+</dd>
+<dt>force_lower_case: <cite>bool</cite>, optional (default=True)</dt><dd><p>If you are working with a cased version of an embedding, set this to false. Usually, in the tokenizer,
+the text lowercasing is handled. However, having it here as well can help the user with getting a better
+grasp of how the data will look like in the pre-processing stage.</p>
+</dd>
+</dl>
+<p>The output is the pre-processed text of type <cite>Union[str, List[str], List[List[str]]]</cite>.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-coronai.library">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-coronai.library" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="clearer"></div>
+      </div>
+    </div>
+
+
+  </body>
+</html>

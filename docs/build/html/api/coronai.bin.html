@@ -1,0 +1,359 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <title>coronai.bin package &#8212; CoronAI v0.1.0 documentation</title>
+
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-4.3.1-dist/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinxbootstrap4.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/sphinxbootstrap4.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="coronai.library package" href="coronai.library.html" />
+    <link rel="prev" title="Welcome to CoronAI’s documentation!" href="../index.html" /> 
+  </head><body>
+  <nav class="navbar navbar-expand-md  fixed-top navbar-dark bg-inverse flex-wrap">
+    <button class="navbar-toggler ml-auto py-2" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">
+      &#9776;
+    </button>
+      <div class="navbar-collapse collapse" id="exCollapsingNavbar2">
+           <a class="navbar-brand py-1" href="../index.html">
+              <img class="logo" src="../_static/logo.png" alt="CoronAI"/>
+          </a>
+          <ul class="navbar-nav mr-auto">
+          
+              <li class="nav-item dropdown d-none d-sm-block" id="navbar-pages">
+                  <a class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
+                  <ul class="dropdown-menu">
+                  <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">coronai.bin package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-coronai.bin.coronai_segment2vector">coronai.bin.coronai_segment2vector module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-coronai.bin.coronai_unsupervised_clustering">coronai.bin.coronai_unsupervised_clustering module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-coronai.bin">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="coronai.library.html">coronai.library package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="coronai.library.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coronai.library.html#module-coronai.library.anlp">coronai.library.anlp module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coronai.library.html#module-coronai.library.preprocessing">coronai.library.preprocessing module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coronai.library.html#module-coronai.library">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="coronai.html">coronai package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="coronai.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">coronai.bin package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-coronai.bin.coronai_segment2vector">coronai.bin.coronai_segment2vector module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-coronai.bin.coronai_unsupervised_clustering">coronai.bin.coronai_unsupervised_clustering module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-coronai.bin">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="coronai.library.html">coronai.library package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="coronai.library.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="coronai.library.html#module-coronai.library.anlp">coronai.library.anlp module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="coronai.library.html#module-coronai.library.preprocessing">coronai.library.preprocessing module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="coronai.library.html#module-coronai.library">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="coronai.html#module-coronai">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">coronai</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="coronai.html">coronai package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="coronai.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">coronai.bin package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="coronai.library.html">coronai.library package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="coronai.html#module-coronai">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                  </ul>
+              </li>
+              <li class="nav-item">
+              <a  class="nav-link" href="../index.html">Home</a></li>
+              <li class="nav-item">
+              
+                  <a  class="nav-link" href="http://example.com">Link</a></li>
+          </ul>
+          <div class="dropdown-divider d-block d-sm-none mb-4"></div>
+             
+<form class="form-inline" action="../search.html" method="get">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+      </div>
+
+      <!--<div class="row hidden-sm-up">
+          <div class="collapse navbar-toggleable-xs container" id="exCollapsingNavbar2">
+              <div class="container">
+             　　 <a class="navbar-brand" href="../index.html">
+                      <img class="logo" src="../_static/logo.png" alt="CoronAI"/>
+                  </a>
+              </div>
+              <ul class="nav navbar-nav">
+                  <li>
+                  <a  class="nav-link" href="../index.html">Home</a></li>
+                  <li>
+                  
+                      <a  class="nav-link" href="http://example.com">Link</a></li>
+              </ul>
+              <div class="dropdown-divider"></div>
+              <div class="navbar-text">search<div>
+              
+<form class="form-inline" action="../search.html" method="get">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          </div>
+      </div>-->
+    </nav>
+  </div>
+
+    <div class="related d-flex justify-content-between bg-light flex-wrap" role="navigation" aria-label="related navigation">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="../index.html">CoronAI v0.1.0 documentation</a></li>
+            <li class="breadcrumb-item active">coronai.bin package</li>
+        </ol>
+       <div>
+          <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+               <a href="../index.html" title="Previous Chapter: Welcome to CoronAI’s documentation!" class="btn btn-primary" role="botton" accesskey="P">
+                   &laquo; Welcome to Co...
+               </a>
+               <a href="coronai.library.html" title="Next Chapter: coronai.library package" class="btn btn-primary" role="botton" accesskey="N">
+                   coronai.libra... &raquo;
+               </a>
+           </div>
+       </div>
+    </div>
+
+  <div class="main container-fluid">
+    <div class="row"> 
+      <div class="sphinxsidebar d-none d-md-block">
+        <div class="sphinxsidebarwrapper">          
+            <h4>Table Of Contents</h4>
+            
+            
+              <div class="sidebartoctree">
+                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">coronai.bin package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-coronai.bin.coronai_segment2vector">coronai.bin.coronai_segment2vector module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-coronai.bin.coronai_unsupervised_clustering">coronai.bin.coronai_unsupervised_clustering module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-coronai.bin">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="coronai.library.html">coronai.library package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="coronai.library.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coronai.library.html#module-coronai.library.anlp">coronai.library.anlp module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coronai.library.html#module-coronai.library.preprocessing">coronai.library.preprocessing module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coronai.library.html#module-coronai.library">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="coronai.html">coronai package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="coronai.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">coronai.bin package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-coronai.bin.coronai_segment2vector">coronai.bin.coronai_segment2vector module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-coronai.bin.coronai_unsupervised_clustering">coronai.bin.coronai_unsupervised_clustering module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-coronai.bin">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="coronai.library.html">coronai.library package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="coronai.library.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="coronai.library.html#module-coronai.library.anlp">coronai.library.anlp module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="coronai.library.html#module-coronai.library.preprocessing">coronai.library.preprocessing module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="coronai.library.html#module-coronai.library">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="coronai.html#module-coronai">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">coronai</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="coronai.html">coronai package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="coronai.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">coronai.bin package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="coronai.library.html">coronai.library package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="coronai.html#module-coronai">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            
+          
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../index.html"
+                        title="previous chapter">Welcome to CoronAI’s documentation!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="coronai.library.html"
+                        title="next chapter">coronai.library package</a></p>
+<div id="searchbox" style="display: none">
+    <form class="form search" action="../search.html" method="get">
+      <input type="text" name="q" class="form-control" placeholder="Search..." />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <ul class="this-page-menu list-unstyled text-right">
+    <li><a href="../_sources/api/coronai.bin.rst.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+        </div>
+      </div> 
+
+      <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="coronai-bin-package">
+<h1>coronai.bin package<a class="headerlink" href="#coronai-bin-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-coronai.bin.coronai_segment2vector">
+<span id="coronai-bin-coronai-segment2vector-module"></span><h2>coronai.bin.coronai_segment2vector module<a class="headerlink" href="#module-coronai.bin.coronai_segment2vector" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="coronai.bin.coronai_segment2vector.main">
+<code class="sig-prename descclassname">coronai.bin.coronai_segment2vector.</code><code class="sig-name descname">main</code><span class="sig-paren">(</span><em class="sig-param">args</em><span class="sig-paren">)</span><a class="headerlink" href="#coronai.bin.coronai_segment2vector.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>In many comment analysis and note analysis applications it is important to be able to represent portions
+of the string as numeric vectors. This application in CoronAI project assists us with that. Using this application,
+one can read the clean CSV file that includes the text segments, and represent each and every one of them
+using a variant of BERT.</p>
+<p>Sample command to run:</p>
+<p><code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">coronai_segment2vector</span> <span class="pre">--gpu=2</span> <span class="pre">--input_csv=.../text_segment_dataset.csv</span> <span class="pre">--output_pkl=.../output.pkl</span> <span class="pre">--path_to_bert_weights=.../NCBI_BERT_pubmed_mimic_uncased_L-24_H-1024_A-16</span> <span class="pre">--batch_size=400</span>
+<span class="pre">`</span></code></p>
+<dl class="simple">
+<dt>args: <cite>args.Namespace</cite>, required</dt><dd><p>The arguments needed for it</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-coronai.bin.coronai_unsupervised_clustering">
+<span id="coronai-bin-coronai-unsupervised-clustering-module"></span><h2>coronai.bin.coronai_unsupervised_clustering module<a class="headerlink" href="#module-coronai.bin.coronai_unsupervised_clustering" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="coronai.bin.coronai_unsupervised_clustering.birch_pipeline">
+<code class="sig-prename descclassname">coronai.bin.coronai_unsupervised_clustering.</code><code class="sig-name descname">birch_pipeline</code><span class="sig-paren">(</span><em class="sig-param">args: argparse.Namespace</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#coronai.bin.coronai_unsupervised_clustering.birch_pipeline" title="Permalink to this definition">¶</a></dt>
+<dd><p>The main function of this application when birch is requested.</p>
+<dl class="simple">
+<dt>args: <cite>argparse.Namespace</cite>, required</dt><dd><p>The argument namespace passed from terminal</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="coronai.bin.coronai_unsupervised_clustering.compute_point_loss">
+<code class="sig-prename descclassname">coronai.bin.coronai_unsupervised_clustering.</code><code class="sig-name descname">compute_point_loss</code><span class="sig-paren">(</span><em class="sig-param">X: numpy.ndarray, labels: List[int], average: bool = True</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#coronai.bin.coronai_unsupervised_clustering.compute_point_loss" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="#coronai.bin.coronai_unsupervised_clustering.compute_point_loss" title="coronai.bin.coronai_unsupervised_clustering.compute_point_loss"><code class="xref py py-func docutils literal notranslate"><span class="pre">compute_point_loss()</span></code></a> method can be used for computing the point-based loss in our
+unsupervised scheme</p>
+<dl class="simple">
+<dt>X: <cite>numpy.ndarray</cite>, required</dt><dd><p>The input</p>
+</dd>
+<dt>labels: <cite>List[int]</cite>, required</dt><dd><p>The labels that are associated with inputs by the inference scheme</p>
+</dd>
+<dt>average: <cite>bool</cite>, optional (default=True)</dt><dd><p>Boolean indicator to determine whether or not the loss is to be averaged.</p>
+</dd>
+</dl>
+<p>The <cite>float</cite> loss value.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="coronai.bin.coronai_unsupervised_clustering.fetch_input_dict">
+<code class="sig-prename descclassname">coronai.bin.coronai_unsupervised_clustering.</code><code class="sig-name descname">fetch_input_dict</code><span class="sig-paren">(</span><em class="sig-param">input_files: str</em><span class="sig-paren">)</span><a class="headerlink" href="#coronai.bin.coronai_unsupervised_clustering.fetch_input_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="#coronai.bin.coronai_unsupervised_clustering.fetch_input_dict" title="coronai.bin.coronai_unsupervised_clustering.fetch_input_dict"><code class="xref py py-func docutils literal notranslate"><span class="pre">fetch_input_dict()</span></code></a> is responsible for fetching the input file.</p>
+<dl class="simple">
+<dt>input_files: <cite>str</cite>, required</dt><dd><p>The filepath for the input dataset</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="coronai.bin.coronai_unsupervised_clustering.kmeans_pipeline">
+<code class="sig-prename descclassname">coronai.bin.coronai_unsupervised_clustering.</code><code class="sig-name descname">kmeans_pipeline</code><span class="sig-paren">(</span><em class="sig-param">args: argparse.Namespace</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#coronai.bin.coronai_unsupervised_clustering.kmeans_pipeline" title="Permalink to this definition">¶</a></dt>
+<dd><p>The main function of this application when kmeans is requested.</p>
+<dl class="simple">
+<dt>args: <cite>argparse.Namespace</cite>, required</dt><dd><p>The argument namespace passed from terminal</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="coronai.bin.coronai_unsupervised_clustering.main">
+<code class="sig-prename descclassname">coronai.bin.coronai_unsupervised_clustering.</code><code class="sig-name descname">main</code><span class="sig-paren">(</span><em class="sig-param">args: argparse.Namespace</em><span class="sig-paren">)</span><a class="headerlink" href="#coronai.bin.coronai_unsupervised_clustering.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>The main function of this application. Sample command to run this application is:</p>
+<p><a href="#id1"><span class="problematic" id="id2">``</span></a>`
+coronai_unsupervised_clustering –method_name=kmeans –method_params=[random_state:int:2019] –method_searchspace=n_clusters:5:100 –output_bundle=/home/shayan/data/outputs/coronai/kmeans.pkl –input_files=/home/shayan/data/outputs/coronai/full_representations_dataset.pkl</p>
+<p><a href="#id3"><span class="problematic" id="id4">``</span></a><a href="#id5"><span class="problematic" id="id6">`</span></a></p>
+<dl class="simple">
+<dt>args: <cite>argparse.Namespace</cite>, required</dt><dd><p>The argument namespace passed from terminal</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="coronai.bin.coronai_unsupervised_clustering.parse_parameters_from_special_string">
+<code class="sig-prename descclassname">coronai.bin.coronai_unsupervised_clustering.</code><code class="sig-name descname">parse_parameters_from_special_string</code><span class="sig-paren">(</span><em class="sig-param">input_string: str</em><span class="sig-paren">)</span> &#x2192; Dict[str, Any]<a class="headerlink" href="#coronai.bin.coronai_unsupervised_clustering.parse_parameters_from_special_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>[Function has been taken from diagnote project]</p>
+<p>The <a class="reference internal" href="#coronai.bin.coronai_unsupervised_clustering.parse_parameters_from_special_string" title="coronai.bin.coronai_unsupervised_clustering.parse_parameters_from_special_string"><code class="xref py py-func docutils literal notranslate"><span class="pre">parse_parameters_from_special_string()</span></code></a> returns the dict version of the optimization parameters for PyTorch optimizers.
+Note that the <cite>params</cite> argument is unattended and has to be filled later.</p>
+<dl class="simple">
+<dt>input_string: <cite>str</cite>, required</dt><dd><p>The string format of parameter, type, value. For example: <cite>lr:float:0.001,weight_decay:float:0.1</cite>.</p>
+</dd>
+</dl>
+<p>The <cite>Dict[str, Any]</cite> of the parameters and their values.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-coronai.bin">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-coronai.bin" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="clearer"></div>
+      </div>
+    </div>
+
+
+  </body>
+</html>

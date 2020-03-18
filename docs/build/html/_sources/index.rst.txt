@@ -1,0 +1,22 @@
+Welcome to CoronAI's documentation!
+===================================
+
+Welcome to the CoronAI's api documentation!
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+   api/coronai.bin.rst
+   api/coronai.library.rst
+   api/coronai.rst
+   api/modules.rst
+
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
