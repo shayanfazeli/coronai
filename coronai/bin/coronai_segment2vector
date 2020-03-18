@@ -20,6 +20,7 @@ import pandas
 import os
 from coronai.library.anlp import get_bert_token_indexers, get_bert_token_embeddings, BertSequencePooler
 from coronai.library.preprocessing import preprocess_text
+from allennlp.nn import util as nn_util
 
 
 def main(args):
@@ -125,6 +126,8 @@ def main(args):
 
     for batches_processed_sofar in tqdm(range(0, number_of_instances // batch_size + 1)):
         sample = next(data_stream)
+        if args.gpu > -1:
+            sample = nn_util.move_to_device(sample, torch.device('cuda:{}'.format(args.gpu)))
 
         if args.gpu > -1:
             sample['source_tokens'] = sample['source_tokens'].to(torch.device('cuda:{}'.format(args.gpu)))
