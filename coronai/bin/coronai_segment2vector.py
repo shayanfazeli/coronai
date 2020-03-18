@@ -127,7 +127,7 @@ def main(args):
     for batches_processed_sofar in tqdm(range(0, number_of_instances // batch_size + 1)):
         sample = next(data_stream)
         if args.gpu > -1:
-            sample = nn_util.move_to_device(sample, torch.device('cuda:{}'.format(args.gpu)))
+            sample = nn_util.move_to_device(sample, args.gpu)
 
         vector_representations = sequence_encoder(
             source_token_embeddings(sample['source_tokens'])
