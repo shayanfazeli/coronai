@@ -19,6 +19,7 @@ import pickle, json
 import matplotlib.pyplot as plt
 import plotnine as p9
 from tqdm import tqdm
+import sklearn
 from sklearn.cluster import KMeans, Birch
 import numpy.linalg as linear_algebra
 
@@ -104,6 +105,8 @@ def main(args: argparse.Namespace):
 
     ```
     coronai_unsupervised_clustering --method_name=kmeans --method_params=[random_state:int:2019] --method_searchspace=n_clusters:5:100 --output_bundle=/home/shayan/data/outputs/coronai/kmeans.pkl --input_files=/home/shayan/data/outputs/coronai/full_representations_dataset.pkl
+
+    coronai_unsupervised_clustering --method_name=birch --method_params=[branching_factor:int:50,threshold:float:0.5] --method_searchspace=n_clusters:3:100 --output_bundle=/home/shayan/data/outputs/coronai/birch.pkl --input_files=/home/shayan/data/outputs/coronai/full_representations_dataset.pkl
 
     ```
 
@@ -268,7 +271,13 @@ if __name__ == "__main__":
         help='The format is: num_clusters:1:50,random_state:1:20'
     )
 
+    parser.add_argument(
+        '--max_memory', type=int, default=30000,
+        help='The maximum amount of memory that the application is allowed to use, in MB'
+    )
+
     args = parser.parse_args()
 
     # running the main app
-    main(args)
+    with sklearn.config_context(working_memory=args.max_memory):
+        main(args)
