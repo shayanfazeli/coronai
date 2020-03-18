@@ -139,7 +139,7 @@ def main(args):
         output_corpora['dataset_index'] += sample['dataset_index']
         output_corpora['vector_representation'] += [numpy.array(e) for e in vector_representations.tolist()]
 
-        if batches_processed_sofar > 0 and batches_processed_sofar % 500 == 0:
+        if batches_processed_sofar > 0 and batches_processed_sofar % 100 == 0:
             if not os.path.isdir(os.path.join(os.path.dirname(args.output_pkl), 'batches')):
                 os.makedirs(os.path.join(os.path.dirname(args.output_pkl), 'batches'))
             with open(os.path.join(os.path.dirname(args.output_pkl),
