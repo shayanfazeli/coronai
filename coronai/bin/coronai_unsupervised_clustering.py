@@ -18,6 +18,7 @@ import pandas
 import pickle, json
 import matplotlib.pyplot as plt
 import plotnine as p9
+from copy import deepcopy
 from tqdm import tqdm
 import sklearn
 from sklearn.cluster import KMeans, Birch, MiniBatchKMeans
@@ -186,9 +187,9 @@ def kmeans_pipeline(args: argparse.Namespace) -> None:
             history.append(
                 {'search_on': variable_name,
                  'method_name': 'kmeans',
-                 'parameters': method_parameters,
+                 'parameters': method_parameters.copy(),
                  'input_files': args.input_files,
-                 'labels': method_model.labels_,
+                 'labels': method_model.labels_.copy(),
                  'loss': compute_point_loss(X=X, labels=method_model.labels_)
                  }
             )
@@ -217,9 +218,9 @@ def kmeans_pipeline(args: argparse.Namespace) -> None:
             history.append(
                 {'search_on': variable_name,
                  'method_name': 'kmeans',
-                 'parameters': method_parameters,
+                 'parameters': method_parameters.copy(),
                  'input_files': args.input_files,
-                 'labels': labels,
+                 'labels': labels.copy(),
                  'loss': compute_point_loss(X=X, labels=method_model.labels_)
                  }
             )
@@ -265,9 +266,9 @@ def birch_pipeline(args: argparse.Namespace) -> None:
             history.append(
                 {'search_on': variable_name,
                  'method_name': 'birch',
-                 'parameters': method_parameters,
+                 'parameters': method_parameters.copy(),
                  'input_files': args.input_files,
-                 'labels': method_model.labels_,
+                 'labels': method_model.labels_.copy(),
                  'loss': compute_point_loss(X=X, labels=method_model.labels_)
                  }
             )
@@ -296,9 +297,9 @@ def birch_pipeline(args: argparse.Namespace) -> None:
             history.append(
                 {'search_on': variable_name,
                  'method_name': 'kmeans',
-                 'parameters': method_parameters,
+                 'parameters': method_parameters.copy(),
                  'input_files': args.input_files,
-                 'labels': labels,
+                 'labels': labels.copy(),
                  'loss': compute_point_loss(X=X, labels=method_model.labels_)
                  }
             )
