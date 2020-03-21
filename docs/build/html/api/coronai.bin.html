@@ -319,6 +319,7 @@ unsupervised scheme</p>
 <dd><p>The main function of this application. Sample command to run this application is:</p>
 <p><a href="#id1"><span class="problematic" id="id2">``</span></a>`
 coronai_unsupervised_clustering –method_name=kmeans –method_params=[random_state:int:2019] –method_searchspace=n_clusters:5:100 –output_bundle=/home/shayan/data/outputs/coronai/kmeans.pkl –input_files=/home/shayan/data/outputs/coronai/full_representations_dataset.pkl</p>
+<p>coronai_unsupervised_clustering –method_name=birch –method_params=[branching_factor:int:50,threshold:float:0.5] –method_searchspace=n_clusters:3:100 –output_bundle=/home/shayan/data/outputs/coronai/birch.pkl –input_files=/home/shayan/data/outputs/coronai/full_representations_dataset.pkl</p>
 <p><a href="#id3"><span class="problematic" id="id4">``</span></a><a href="#id5"><span class="problematic" id="id6">`</span></a></p>
 <dl class="simple">
 <dt>args: <cite>argparse.Namespace</cite>, required</dt><dd><p>The argument namespace passed from terminal</p>

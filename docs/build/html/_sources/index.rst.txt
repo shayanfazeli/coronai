@@ -1,7 +1,15 @@
 Welcome to CoronAI's documentation!
 ===================================
 
-Welcome to the CoronAI's api documentation!
+.. image:: _static/corona.jpg
+    :width: 500
+    :alt: Coronavirus, courtesy of alachuacounty.us
+
+Welcome to the CoronAI's documentation!
+
+Please view this `medium post <link>`_ for more information on this package.
+
+
 
 .. toctree::
    :maxdepth: 2
