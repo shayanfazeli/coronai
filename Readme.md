@@ -3,7 +3,7 @@
 An __ERLab__ Project
 
 ### Introdcution
-Please view this [article]() in that regard.
+Please view this [article](https://medium.com/@shayan.fazeli/coronai-deep-information-extraction-for-covid-19-related-articles-f7c016149586?sk=80cd4fb635854934083f2c2dd26b66b2) in that regard.
 
 ### Installation
 Clone this github repository and run:
@@ -55,6 +55,14 @@ The method searchspace allows you to choose one parameter and do a search over i
 In every step, the output file will be updated (so you do not need to wait forever to be able to check things).
 Also, the format for inputting method parameters are obvious.
 
+### Documentation
+
+The documentation for this project is available in [here](http://web.cs.ucla.edu/~shayan/coronai/docs/)
+
+```bash
+username: user
+password: mlisLife
+```
 
 ### CoronAI Shared Drive
 
